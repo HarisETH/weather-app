@@ -39,7 +39,12 @@ function App() {
     fetchData();
   }, [lati, longi])
 
-
+  const btnHR = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+  }
 
 
 
@@ -47,43 +52,49 @@ function App() {
 
 
   return (
-    <div className='bg-styler min-h-screen w-full bg-black flex jusit flex-wrap font-mono text-2xl '>
+    <div className='bg-styler min-h-screen w-full bg-black flex   jusitify-center items-center flex-wrap font-mono text-2xl '>
 
-      <div className='px-12 h-36 rounded-lg bg-white flex font-mono text-2xl items-center justify-center gap-2'>
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation-2"><polygon points="12 2 19 21 12 17 5 21 12 2"></polygon></svg>
-
-        <h1>{place}</h1>
-      </div>
-
-      <div className='px-12 h-36 bg-white rounded-lg flex justify-center items-center'>
+      <div className="h-full w-full flex justify-center items-center flex-wrap gap-4">
 
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thermometer"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
-
-        <h1>{temp}</h1>
+        <div className='px-12 h-36 bg-blue-200 rounded-lg flex justify-center items-center'>
 
 
-      </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thermometer"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
 
-      <div className='px-12 h-36 bg-white rounded-lg flex justify-center items-center'>
-
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thermometer"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
-
-        <h1>{temp}</h1>
+          <h1>{mintemp}</h1>
 
 
-      </div>
+        </div>
 
-      <div className='px-12 h-36 bg-white rounded-lg flex justify-center items-center'>
-
-
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thermometer"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
-
-        <h1>{temp}</h1>
+        <div className='px-12 h-36 bg-white rounded-lg flex justify-center items-center'>
 
 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thermometer"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+
+          <h1>{temp}</h1>
+
+
+        </div>
+
+        <div className='px-12 h-36 bg-red-200 rounded-lg flex justify-center items-center'>
+
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-thermometer"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+
+          <h1>{maxtemp}</h1>
+
+
+        </div>
+
+        <div className='px-12 h-36 rounded-lg bg-white flex font-mono text-2xl items-center justify-center gap-2'>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-navigation-2"><polygon points="12 2 19 21 12 17 5 21 12 2"></polygon></svg>
+
+          <h1>{place}</h1>
+
+        </div>
+        <button onClick={btnHR}>refresh</button>
       </div>
     </div>
   )
